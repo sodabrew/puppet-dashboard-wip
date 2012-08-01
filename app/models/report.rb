@@ -30,6 +30,11 @@ class Report < ActiveRecord::Base
 
   scope :inspections, includes(:metrics).where(:kind => 'inspect')
   scope :applies,     includes(:metrics).where(:kind => 'apply')
+  scope :all,         includes(:metrics).where(:kind => 'apply')
+  scope :changed,     includes(:metrics).where(:kind => 'apply', :status => 'changed'   )
+  scope :unchanged,   includes(:metrics).where(:kind => 'apply', :status => 'unchanged' )
+  scope :failed,      includes(:metrics).where(:kind => 'apply', :status => 'failed'    )
+  scope :pending,     includes(:metrics).where(:kind => 'apply', :status => 'pending'   )
 
   def total_resources
     metric_value("resources", "total")
