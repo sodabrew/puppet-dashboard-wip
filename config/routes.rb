@@ -1,7 +1,7 @@
 PuppetDashboard::Application.routes do
 
   root :to => 'pages#home'
-  
+
   resources :node_classes do
     collection do
       get :search
