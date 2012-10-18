@@ -8,8 +8,6 @@ require 'rake'
 require 'rake/testtask'
 require 'rdoc/task'
 
-require 'tasks/rails'
-
 Dir['ext/packaging/tasks/**/*'].sort.each { |t| load t }
 
 build_defs_file = 'ext/build_defaults.yaml'
