@@ -20,8 +20,8 @@ class Report < ActiveRecord::Base
 
   default_scope :order => 'time DESC', :include => :node
 
-  named_scope :inspections, :conditions => {:kind => "inspect"}, :include => :metrics
-  named_scope :applies,     :conditions => {:kind => "apply"  }, :include => :metrics
+  scope :inspections, :conditions => {:kind => "inspect"}, :include => :metrics
+  scope :applies,     :conditions => {:kind => "apply"  }, :include => :metrics
 
   def total_resources
     metric_value("resources", "total")
