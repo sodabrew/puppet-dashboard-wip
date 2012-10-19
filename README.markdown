@@ -18,10 +18,10 @@ Fast Install
 ------------
 
 * Check out the code.
-* `gem install bundler`
-* `bundle install --path vendor/bundle`
 * Edit your `config/settings.yml` and `config/database.yml` files.
 * Create a MySQL database and user, and set `max_allowed_packet` to 32M.
+* `gem install bundler`
+* `bundle install --path vendor/bundle`
 * `bundle exec rake db:migrate`
 * `bundle exec rails start`
 * Set up Puppet to be Dashboard-aware.
