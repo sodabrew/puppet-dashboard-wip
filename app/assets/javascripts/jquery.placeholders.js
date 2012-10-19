@@ -1,5 +1,3 @@
-//= require <jquery>
-
 /*!
  * Cross-browser Placeholder Plugin for jQuery
  *
