@@ -56,7 +56,7 @@ describe ReportsController do
       end
 
       it "should be 200, because we queued the job" do
-        response.code.should == '200'
+        response.should be_success
       end
     end
 
@@ -66,7 +66,7 @@ describe ReportsController do
       end
 
       it "should be 200, because we queued the job" do
-        response.code.should == '200'
+        response.should be_success
       end
     end
   end
@@ -75,20 +75,20 @@ describe ReportsController do
     it "should fail with a 403 error when disable_legacy_report_upload_url is true" do
       SETTINGS.stubs(:disable_legacy_report_upload_url).returns(true)
       response = post_with_body('create', @yaml, :content_type => 'application/x-yaml')
-      response.status.should == "403 Forbidden"
+      response.should be_forbidden
     end
 
     it "should succeed when disable_legacy_report_upload_url is false" do
       SETTINGS.stubs(:disable_legacy_report_upload_url).returns(false)
       response = post_with_body('create', @yaml, :content_type => 'application/x-yaml')
-      response.status.should == "200 OK"
+      response.should be_success
     end
   end
 
   describe "#search" do
     it "should render the search form if there are no parameters" do
       get('search')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/search")
       assigns[:matching_files].should == nil
       assigns[:unmatching_files].should == nil
