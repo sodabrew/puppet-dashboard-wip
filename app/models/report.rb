@@ -18,10 +18,10 @@ class Report < ActiveRecord::Base
   after_save :update_node
   after_destroy :replace_last_report
 
-  default_scope :order => 'time DESC', :include => :node
+  default_scope includes(:node).order('time DESC')
 
-  scope :inspections, :conditions => {:kind => "inspect"}, :include => :metrics
-  scope :applies,     :conditions => {:kind => "apply"  }, :include => :metrics
+  scope :inspections, includes(:metrics).where(:kind => 'inspect')
+  scope :applies,     includes(:metrics).where(:kind => 'apply')
 
   def total_resources
     metric_value("resources", "total")
