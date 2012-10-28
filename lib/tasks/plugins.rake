@@ -1,5 +1,5 @@
 require 'pathname'
-require 'ftools'
+require 'fileutils'
 
 namespace :puppet do
   namespace :plugin do
