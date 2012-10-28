@@ -1,4 +1,4 @@
-#sidebar= render 'shared/node_manager_sidebar'
+#sidebar= render :partial => 'shared/node_manager_sidebar'
 #main
   .header
     %h2
@@ -9,4 +9,4 @@
       %span.count== (#{@reports.total_entries})
 
   .item
-    = render 'reports/reports_table', :reports => @reports, :node => @node
+    = render :partial => 'reports/reports_table', :locals => { :reports => @reports, :node => @node }
