@@ -4,7 +4,7 @@
       %th.status{:scope => :col}
         &nbsp;
       %th{:scope => :col} Reported at &darr;
-      - unless node
+      - unless defined?(node)
         %th{:scope => :col} Node
       %th{:scope => :col} Total
       %th{:scope => :col} Failed
