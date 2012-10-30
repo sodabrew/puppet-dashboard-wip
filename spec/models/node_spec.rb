@@ -232,7 +232,7 @@ describe Node do
     describe "handling parameters in the graph" do
 
       it "should return the compiled parameters" do
-        @node.compiled_parameters.should == [
+        @node.compiled_parameters.should =~ [
           OpenStruct.new(:name => 'foo', :value => '1', :sources => Set[@node_group_a]),
           OpenStruct.new(:name => 'bar', :value => '2', :sources => Set[@node_group_b])
         ]
@@ -243,7 +243,7 @@ describe Node do
         @node_group_a1.parameters << Parameter.create(:key => 'foo', :value => '2')
         @node_group_a.node_groups << @node_group_a1
 
-        @node.compiled_parameters.should == [
+        @node.compiled_parameters.should =~ [
           OpenStruct.new(:name => 'foo', :value => '1', :sources => Set[@node_group_a]),
           OpenStruct.new(:name => 'bar', :value => '2', :sources => Set[@node_group_b])
         ]
@@ -291,7 +291,7 @@ describe Node do
         @node_group_a.node_groups << @node_group_c
         @node_group_a.node_groups << @node_group_d
 
-        @node.compiled_parameters.should == [
+        @node.compiled_parameters.should =~ [
           OpenStruct.new(:name => 'foo', :value => '1', :sources => Set[@node_group_a]),
           OpenStruct.new(:name => 'bar', :value => '2', :sources => Set[@node_group_b])
         ]
