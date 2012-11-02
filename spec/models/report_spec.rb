@@ -221,6 +221,7 @@ describe Report do
       it "should populate report related tables from a version 1 yaml report" do
         @node = Node.generate(:name => 'puppet.puppetlabs.vm')
         @report_yaml = File.read(File.join(Rails.root, "spec/fixtures/reports/puppet26/report_ok_service_started_ok.yaml"))
+        @report_yaml.untaint
         file = '/etc/puppet/manifests/site.pp'
         Report.create_from_yaml(@report_yaml)
         Report.count.should == 1
@@ -263,7 +264,7 @@ describe Report do
           [ 'Schedule'   ,  'monthly' ,  "0.00" ,  nil ,  nil ,  ['monthly'    ,  'schedule'] ,  0, false ],
           [ 'Schedule'   ,  'never'   ,  "0.00" ,  nil ,  nil ,  ['never'      ,  'schedule'] ,  0, false ],
           [ 'Service'    ,  'mysqld'  ,  "1.56" ,  file,  8   ,  ['class'      ,  'default'   ,  'mysqld' ,  'node' ,  'service'] ,  1, false ],
-          [ 'Exec'       ,'/bin/true' ,  "0.10" ,  file ,  9  ,  ['class'      ,  'default'   ,  'exec' ,  'node' ] ,  1, true ],
+          [ 'Exec'       ,'/bin/true' ,  "0.10" ,  file,  9   ,  ['class'      ,  'default'   ,  'exec'   ,  'node'             ] ,  1, true ],
         ]
         report.events.map { |t| [
           t.property,
@@ -457,6 +458,7 @@ describe Report do
     it "should destroy all dependent model objects" do
       @node = Node.generate(:name => 'puppet.puppetlabs.vm')
       @report_yaml = File.read(File.join(Rails.root, "spec/fixtures/reports/puppet26/report_ok_service_started_ok.yaml"))
+      @report_yaml.untaint
       file = '/etc/puppet/manifests/site.pp'
       report = Report.create_from_yaml(@report_yaml)
       ResourceStatus.count.should_not == 0
