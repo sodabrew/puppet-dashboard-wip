@@ -368,7 +368,8 @@ describe Node do
       end
 
       it "should include parameters of the node itself" do
-        @node.parameters << Parameter.create(:key => "node_parameter", :value => "exist")
+        @param_5 = Parameter.create(:key => "node_parameter", :value => "exist")
+        @node.parameters << @param_5
 
         @node.compiled_parameters.should be_any {|p| p[:name] == "node_parameter" && p[:value] == "exist"}
       end
