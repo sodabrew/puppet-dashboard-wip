@@ -14,6 +14,7 @@ describe "/statuses/_run_failure.html.haml" do
 
       32.times do |n|
         report_yaml = report_yaml_with(:host => "node", :time => n.days.ago)
+        report_yaml.untaint
         Report.create_from_yaml(report_yaml)
       end
 
