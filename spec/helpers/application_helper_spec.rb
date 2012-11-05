@@ -50,15 +50,15 @@ describe ApplicationHelper do
     context "when given paginated records" do
       subject { helper.pagination_for([*(1..100)].paginate) }
 
-      it { rendered.should have_tag('div.actionbar') }
-      it { rendered.should have_tag('a', :text => /Next/) }
+      it { should have_tag('div.actionbar') }
+      it { should have_tag('a', :text => /Next/) }
     end
 
     context "when not given paginated records" do
       subject { helper.pagination_for([]) }
 
-      it { rendered.should have_tag('div.actionbar') }
-      it { rendered.should_not have_tag('a', :text => /Next/) }
+      it { should have_tag('div.actionbar') }
+      it { should_not have_tag('a', :text => /Next/) }
     end
 
     describe "when rendering the page size control" do

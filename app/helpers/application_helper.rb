@@ -105,7 +105,7 @@ module ApplicationHelper
     content_tag(:div, :class => 'actionbar') do
       pagination = if scope.respond_to?(:total_pages) && scope.total_pages > 1
         [
-        more_link ? content_tag(:span, :class => 'pagination') { link_to("#{count_str}More &raquo;", more_link) } : will_paginate(scope),
+        more_link ? content_tag(:span, :class => 'pagination') { link_to(raw("#{count_str}More &raquo;"), more_link) } : will_paginate(scope),
         ]
       else
         []
@@ -114,7 +114,7 @@ module ApplicationHelper
         pagination_sizer_for(scope),
         tag(:br, :class=> 'clear')
       ]
-      pagination + pagination_sizer
+      raw(pagination + pagination_sizer)
     end
   end
 
