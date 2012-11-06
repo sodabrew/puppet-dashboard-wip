@@ -57,13 +57,8 @@ shared_examples_for "without JSON pagination" do
         end
         subject { assigns[model.name.tableize] }
 
-        it "paginates by the page parameter" do
-          pending "Once upon a time, the collection was paginated until it was realized that this broke the charts."
-          should be_a_kind_of(WillPaginate::Collection)
-        end
-
         it "will paginate" do
-          pending "Why is this same test repeated, it probably fails like the one right above it."
+          pending "Once upon a time, the collection was paginated until it was realized that this broke the charts."
           should be_a_kind_of(WillPaginate::Collection)
         end
       end
