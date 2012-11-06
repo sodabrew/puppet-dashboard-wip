@@ -47,6 +47,10 @@ describe ApplicationHelper do
   end
 
  describe "#pagination_for" do
+    before :each do
+      helper.stubs( :request => request, :params => params, :url_for => 'someurl')
+    end
+
     context "when given paginated records" do
       subject { helper.pagination_for([*(1..100)].paginate) }
 
