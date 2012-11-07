@@ -58,8 +58,7 @@ shared_examples_for "without JSON pagination" do
         subject { assigns[model.name.tableize] }
 
         it "will paginate" do
-          pending "Once upon a time, the collection was paginated until it was realized that this broke the charts."
-          should be_a_kind_of(WillPaginate::Collection)
+          should respond_to(:paginate)
         end
       end
 
