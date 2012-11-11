@@ -59,5 +59,5 @@ Thanks, Mark!
 Contributing
 ------------
 
-To contribute to this project, please read [CONTRIBUTING](puppet-dashboard/CONTRIBUTING.md).
-A list of contributors is found in [CONTRIBUTORS](puppet-dashboard/CONTRIBUTORS.md). Thanks!
+To contribute to this project, please read [CONTRIBUTING](puppet-dashboard/blob/rails3/CONTRIBUTING.md).
+A list of contributors is found in [CONTRIBUTORS](puppet-dashboard/blob/rails3/CONTRIBUTORS.md). Thanks!
