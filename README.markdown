@@ -7,6 +7,17 @@ nodes, and view inventory data and backed-up file contents.
 
 For full documentation, see the [Puppet Dashboard Manual](http://docs.puppetlabs.com/dashboard/manual).
 
+Rails 3 Branch
+--------------
+
+This is the Rails 3 branch of Puppet Dashboard. A great number of changes are
+on this branch vs. the mainline PD 1.2.x / Rails 2 branch. A short summary:
+
+* Update to Rails 3.2, Bundler 1.x, rspec 2, and many other gems.
+* Update jQuery to 1.8.
+* Use Rails mass-assignment protection.
+* Remove Prototype JS.
+
 Dependencies
 ------------
 
