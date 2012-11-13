@@ -22,6 +22,11 @@ gem 'delayed_job', '~> 3.0'
 gem 'delayed_job_active_record', '~> 0.3.3'
 gem 'timeline_fu', '~> 0.3.0'
 
+# Begin adding Authentication, Authorization, Accounting
+gem 'devise', '~> 2.1'
+# gem 'omniauth', '~> 1.1'
+# gem 'paper_trail', '~> 2.0'
+
 group :development, :test do
   gem 'mocha', '~> 0.12.0', :require => false
   gem 'sqlite3'

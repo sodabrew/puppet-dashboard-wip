@@ -2,6 +2,8 @@ PuppetDashboard::Application.routes do
 
   root :to => 'pages#home'
 
+  devise_for :users
+  
   resources :node_classes do
     collection do
       get :search

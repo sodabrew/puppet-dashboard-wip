@@ -20,6 +20,8 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.mock_with :mocha
   config.prepend_before :each do
+    PaperTrail.controller_info = {}
+    PaperTrail.whodunnit = nil
     verbosity = $VERBOSE
     $VERBOSE = nil
     SETTINGS = SettingsReader.default_settings
