@@ -27,7 +27,7 @@
       #header
         = render 'shared/global_nav'
       #content
-        - [:success, :warning, :failure].each do |type|
+        - [:success, :warning, :failure, :notice, :alert].each do |type|
           - if message = flash[type]
             %div.section#flash{:class => type}
               .close= link_to_function icon(:close), "jQuery('#flash').hide()"
