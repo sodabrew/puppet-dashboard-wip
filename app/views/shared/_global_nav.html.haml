@@ -32,3 +32,11 @@
               %a{:href => "#{link["href"]}"}= link['title']
         %li#navigation-autorefresh
           <label><input type="checkbox" id="autorefresh" style="vertical-align: baseline;" /> Refresh this page automatically? <span id="autorefresh_countdown" style="display: inline-block; width: 1em; text-align: right;">&nbsp;</span></label>
+        - if user_signed_in?
+          %li
+            Logged in as #{current_user.email} &dash;
+            = link_to("Logout", destroy_user_session_path, :method => :delete)
+        - else
+          %li
+            = link_to("Login", user_session_path)
+%div.clear

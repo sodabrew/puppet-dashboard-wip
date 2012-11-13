@@ -26,6 +26,11 @@ group :assets do
   gem 'execjs' # Will use system-available JS runtime
 end
 
+# Begin adding Authentication, Authorization, Accounting
+gem 'devise', '~> 2.1'
+# gem 'omniauth', '~> 1.1'
+# gem 'paper_trail', '~> 2.0'
+
 group :development, :test do
   gem 'mocha', '~> 0.13.3', :require => false
   gem 'sqlite3'

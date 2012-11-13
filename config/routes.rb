@@ -2,6 +2,8 @@ PuppetDashboard::Application.routes do
 
   root :to => 'pages#home'
 
+  devise_for :users
+
   # Nodes, Groups, and Classes may all have names or numeric ids
   constraints(:id => /[^\/]+/) do
     resources :node_classes do

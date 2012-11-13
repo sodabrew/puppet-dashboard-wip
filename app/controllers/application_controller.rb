@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
 
   before_filter :set_timezone
+  before_filter :authenticate_user!
 
   protect_from_forgery
 
