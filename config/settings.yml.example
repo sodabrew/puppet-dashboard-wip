@@ -86,4 +86,15 @@ classes_per_page: 50
 groups_per_page: 50
 reports_per_page: 20
 
+# AAA with Devise and OmniAuth
+# auth_email_from: puppet@example.com
+# auth_providers:
+#   google_oauth2:
+#     - YOUR APP ID
+#     - YOUR APP SECRET
+#     - args:
+#       hd: example.com
+#       access_type: offline
+#       approval_prompt:
+
 #===[ fin ]=============================================================

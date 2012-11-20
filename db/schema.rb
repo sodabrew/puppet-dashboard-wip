@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113092311) do
+ActiveRecord::Schema.define(:version => 20121120154328) do
 
   create_table "delayed_job_failures", :force => true do |t|
     t.string   "summary"
@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(:version => 20121113092311) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
