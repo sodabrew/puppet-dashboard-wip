@@ -29,6 +29,7 @@
       #content
         - [:success, :warning, :failure, :notice, :alert].each do |type|
           - if message = flash[type]
+            - type = :warning if type == :alert
             %div.section#flash{:class => type}
               .close= link_to_function icon(:close), "jQuery('#flash').hide()"
               %p
