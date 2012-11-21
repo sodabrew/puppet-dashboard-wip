@@ -16,6 +16,7 @@ gem 'rack'
 
 gem 'daemons'
 gem 'json_pure'
+gem 'system_timer'
 
 gem 'delayed_job', '~> 3.0'
 gem 'delayed_job_active_record', '~> 0.3.3'
@@ -34,4 +35,6 @@ group :development, :test do
   gem 'factory_girl', '< 3.0' # supports ruby 1.8.7
   gem 'shoulda-matchers'
   gem 'rspec-html-matchers'
+  gem 'execjs'
+  gem 'therubyracer'
 end
