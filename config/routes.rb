@@ -2,7 +2,7 @@ PuppetDashboard::Application.routes do
 
   root :to => 'pages#home'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => 'omniauth_callbacks' }
 
   # Nodes, Groups, and Classes may all have names or numeric ids
   constraints(:id => /[^\/]+/) do

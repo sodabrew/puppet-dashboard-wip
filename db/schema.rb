@@ -233,6 +233,9 @@ ActiveRecord::Schema.define(:version => 20130418064011) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.integer  "failed_attempts",        :default => 0
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
