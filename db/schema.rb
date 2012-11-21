@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121120154328) do
+ActiveRecord::Schema.define(:version => 20121121035710) do
 
   postgres = ActiveRecord::Base.connection.adapter_name.downcase =~ /postgres/
 
@@ -219,6 +219,9 @@ ActiveRecord::Schema.define(:version => 20121120154328) do
     t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
+    t.string   "name"
+    t.integer  "failed_attempts",        :default => 0
+    t.datetime "locked_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
