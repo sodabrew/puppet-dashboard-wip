@@ -35,6 +35,13 @@ PuppetDashboard::Application.routes do
       get :search       , :constraints => {:id => /[^\/]+/}
     end
   end
+  
+  ## NOTE: the current routes fail when nodes have complete FQDN 
+  # e.g., /nodes/host.domain.local would trigger a => No route matches [GET] "/nodes/host.domain.local"
+  # Ideally we need to use route globbing
+  match 'nodes/(*id)' => 'nodes#show', :via => [:get], :format => false
+  match 'nodes/(*id)' => 'nodes#update', :via => [:post], :format => false
+  # ...
 
   resources :reports do
     collection do
