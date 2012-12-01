@@ -26,7 +26,7 @@ gem 'timeline_fu', '~> 0.3.0'
 gem 'devise', '~> 2.1'
 gem 'omniauth', '~> 1.1'
 gem 'omniauth-google-oauth2', '~> 0.1.13'
-# gem 'paper_trail', '~> 2.0'
+gem 'paper_trail', '~> 2.0'
 
 group :development, :test do
   gem 'mocha', '~> 0.12.0', :require => false
