@@ -30,7 +30,7 @@ end
 gem 'devise', '~> 2.1'
 gem 'omniauth', '~> 1.1'
 gem 'omniauth-google-oauth2', '~> 0.1.13'
-# gem 'paper_trail', '~> 2.0'
+gem 'paper_trail', '~> 2.0'
 
 group :development, :test do
   gem 'mocha', '~> 0.13.3', :require => false

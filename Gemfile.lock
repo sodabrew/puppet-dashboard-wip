@@ -103,6 +103,9 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
+    paper_trail (2.6.4)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     pg (0.15.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -204,6 +207,7 @@ DEPENDENCIES
   pg (~> 0.15)
   omniauth (~> 1.1)
   omniauth-google-oauth2 (~> 0.1.13)
+  paper_trail (~> 2.0)
   rack
   rails (~> 3.2)
   rake (~> 0.9.3)
