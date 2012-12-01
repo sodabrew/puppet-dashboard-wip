@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   SETTINGS.auth_providers.each_pair do |provider, args|
-    puts 'Adding method #{provider}'
+    logger.debug "Adding method #{provider}"
     define_method provider do
       handle_omniauth
     end
