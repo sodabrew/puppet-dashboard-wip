@@ -110,6 +110,7 @@ secret_token: 'b1bbd28f6f9ebfc25f09da9bff4643f75d5ad8c8da8b60234168c81cd6d32c15e
 # If auth_enabled: true, all pages require a login session or auth token
 # auth_enabled: false
 # auth_email_from: puppet@example.com
+# auth_allow_registration: false
 # auth_providers:
 #   google_oauth2:
 #     - YOUR APP ID
