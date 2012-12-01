@@ -8,7 +8,7 @@
           - css << "height: #{SETTINGS.custom_logo_height}"
           - css << "width: #{SETTINGS.custom_logo_width}"
           %a{:href => root_path, :title => SETTINGS.custom_logo_alt_text, :style => css.join('; ')} Puppet Dashboard
-        - if user_signed_in?
+        - if !SETTINGS.auth_enabled or user_signed_in?
           %li#navigation-home{:class => active_if(request.url == root_url)}
             = link_to "Home", root_path
           %li#navigation-nodes{:class => active_if(controller_name == "nodes" && action_name == "index")}
@@ -31,6 +31,7 @@
             = callback.call self
           %li#navigation-autorefresh
             <label><input type="checkbox" id="autorefresh" style="vertical-align: baseline;" /> Refresh this page automatically? <span id="autorefresh_countdown" style="display: inline-block; width: 1em; text-align: right;">&nbsp;</span></label>
+        - if SETTINGS.auth_enabled and user_signed_in?
           %li
             Logged in as #{current_user.email} &dash;
             = link_to("Logout", destroy_user_session_path, :method => :delete)
