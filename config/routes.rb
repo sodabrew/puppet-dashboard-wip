@@ -19,22 +19,24 @@ PuppetDashboard::Application.routes do
     end
   end
 
-  resources :nodes do
-    member do
-      put :hide
-      put :unhide
-      get :facts
-      get :reports
-    end
-    collection do
-      get :unreported   , :constraints => {:id => /[^\/]+/}
-      get :failed       , :constraints => {:id => /[^\/]+/}
-      get :pending      , :constraints => {:id => /[^\/]+/}
-      get :unresponsive , :constraints => {:id => /[^\/]+/}
-      get :changed      , :constraints => {:id => /[^\/]+/}
-      get :unchanged    , :constraints => {:id => /[^\/]+/}
-      get :hidden       , :constraints => {:id => /[^\/]+/}
-      get :search       , :constraints => {:id => /[^\/]+/}
+  constraints(:id => /[^\/]+/) do
+    resources :nodes do
+      member do
+        put :hide
+        put :unhide
+        get :facts
+        get :reports
+      end
+      collection do
+        get :unreported
+        get :failed
+        get :pending
+        get :unresponsive
+        get :changed
+        get :unchanged
+        get :hidden
+        get :search
+      end
     end
   end
 
