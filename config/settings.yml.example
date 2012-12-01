@@ -87,6 +87,8 @@ groups_per_page: 50
 reports_per_page: 20
 
 # AAA with Devise and OmniAuth
+# If auth_enabled: true, all pages require a login session or auth token
+# auth_enabled: false
 # auth_email_from: puppet@example.com
 # auth_providers:
 #   google_oauth2:
