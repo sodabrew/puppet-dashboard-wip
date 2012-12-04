@@ -18,6 +18,7 @@
 //= require jquery.form
 //= require jquery.placeholders
 //= require jquery.ui.combobox
+//= require jquery.visualize
 //= require jquery.colorbox
 //= require jquery.cookie
 //= require jquery.tipsy

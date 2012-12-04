@@ -17,6 +17,7 @@
  *= require tables
  *= require jquery.ui.custom
  *= require jquery.ui.combobox
+ *= require jquery.visualize
  *= require typography
  *= require links
  *= require token-input-facebook
