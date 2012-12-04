@@ -35,40 +35,39 @@ jQuery(document).ready(function(J) {
     return false;
   });
 
-  J.fn.mapHtml = function() { return this.map(function(){return J(this).html()}).get(); }
-  J.fn.mapHtmlInt = function() { return this.map(function(){return parseInt(J(this).html())}).get(); }
+  J.fn.mapHtml      = function() { return this.map(function(){return J(this).html()}).get(); }
+  J.fn.mapHtmlInt   = function() { return this.map(function(){return parseInt(J(this).html())}).get(); }
   J.fn.mapHtmlFloat = function() { return this.map(function(){return parseFloat(J(this).html())}).get(); }
 
   J("table.data.runtime").each(function(i){
-    var id = "table_runtime"+i;
-    J("<div id='"+id+"' style='height:150px; width: auto'></div>").insertAfter(J(this));
+    var id = "table_runtime" + i;
+    var table = J(this)
+    J("<div id='" + id + "' class='graph' style='height:150px; width: auto'></div>").insertAfter(table);
 
-    var label_data = J(this).find("tr.labels th").mapHtml();
-    var runtime_data = J(this).find("tr.runtimes td").mapHtmlFloat();
+    var data      = []
+    var labels    = table.find("tr.labels th").mapHtml();
+    var runtime   = table.find("tr.runtimes td").mapHtmlInt();
 
-    // new Grafico.LineGraph($(id),
-    //   {
-    //     runtimes: runtime_data
-    //   },
-    //   {
-    //     background_color: "#fff",
-    //     colors: { runtimes: "#009" },
-    //     font_size: 9,
-    //     grid: false,
-    //     label_color: '#666',
-    //     labels: label_data,
-    //     label_rotation: -30,
-    //     markers: "value",
-    //     meanline: true,
-    //     padding_top: 10,
-    //     left_padding: 50,
-    //     // show_horizontal_labels: false,
-    //     show_ticks: false,
-    //     start_at_zero: false,
-    //     stroke_width: 3,
-    //     vertical_label_unit: "s"
-    //   }
-    // );
+    J(labels).each(function(index, label) {
+      data.push([
+        [runtime[index]],
+        { label: label }
+      ])
+    });
+
+    var colors = ['#6078A8', '#78A830', '#F0A800', '#D84830'];
+    var labels = ['Unchanged', 'Changed', 'Pending', 'Failed'];
+
+    jQuery('#' + id).tufteBar({
+      data: data,
+      color: function(index, stackIndex) { return colors[stackIndex] },
+      barLabel: function(index) { return "" },
+      axisLabel: function(index) { return this[1].label },
+      legend: {
+        data: labels,
+        color: function(index) { return colors[index] }
+      }
+    });
 
     J(this).hide();
   });
@@ -76,41 +75,38 @@ jQuery(document).ready(function(J) {
 
 
   J("table.data.status").each(function(i){
-    var id = "table_status"+i;
-    J("<div id='"+id+"' style='height: 150px; width: auto;'></div>").insertAfter(J(this));
+    var id = "table_status" + i;
+    var table = J(this);
 
-    var label_data = J(this).find("tr.labels th").mapHtml();
-    var changed_data = J(this).find("tr.changed td").mapHtmlInt();
-    var unchanged_data = J(this).find("tr.unchanged td").mapHtmlInt();
-    var pending_data = J(this).find("tr.pending td").mapHtmlInt();
-    var failed_data = J(this).find("tr.failed td").mapHtmlInt();
+    J("<div id='" + id + "' class='graph' style='height: 150px; width: auto'></div>").insertAfter(table);
 
-    var changed_data_label = J.map(changed_data, function(item, index){return item+" changed"});
-    var unchanged_data_label = J.map(unchanged_data, function(item, index){return item+" unchanged"});
-    var pending_data_label = J.map(pending_data, function(item, index){return item+" pending"});
-    var failed_data_label = J.map(failed_data, function(item, index){return item+" failed"});
+    var data      = []
+    var labels    = table.find("tr.labels th").mapHtml();
+    var changed   = table.find("tr.changed td").mapHtmlInt();
+    var unchanged = table.find("tr.unchanged td").mapHtmlInt();
+    var pending   = table.find("tr.pending td").mapHtmlInt();
+    var failed    = table.find("tr.failed td").mapHtmlInt();
 
-    // new Grafico.StackedBarGraph($(id),
-    //   {
-    //     unchanged: unchanged_data,
-    //     changed: changed_data,
-    //     pending: pending_data,
-    //     failed: failed_data
-    //   },
-    //   {
-    //     background_color: "#fff",
-    //     colors: { pending: PENDING, changed: CHANGED, unchanged: UNCHANGED, failed: FAILED },
-    //     datalabels: { changed: changed_data_label, unchanged: unchanged_data_label, pending: pending_data_label, failed: failed_data_label },
-    //     font_size: 9,
-    //     grid: false,
-    //     label_color: '#666',
-    //     label_rotation: -30,
-    //     labels: label_data,
-    //     padding_top: 10,
-    //     left_padding: 50,
-    //     show_ticks: false
-    //   }
-    // );
+    J(labels).each(function(index, label) {
+      data.push([
+        [unchanged[index], changed[index], pending[index], failed[index]],
+        { label: label }
+      ])
+    });
+
+    var colors = ['#6078A8', '#78A830', '#F0A800', '#D84830'];
+    var labels = ['Unchanged', 'Changed', 'Pending', 'Failed']
+
+    jQuery('#' + id).tufteBar({
+      data: data,
+      color: function(index, stackIndex) { return colors[stackIndex] },
+      barLabel: function(index) { return "" },
+      axisLabel: function(index) { return this[1].label },
+      legend: {
+        data: labels,
+        color: function(index) { return colors[index] }
+      }
+    });
 
     J(this).hide();
   });
