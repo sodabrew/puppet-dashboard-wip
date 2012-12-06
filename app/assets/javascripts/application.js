@@ -10,6 +10,7 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require raphael
 //= require jquery
 //= require jquery_ujs
 //= require dashboard
@@ -18,6 +19,8 @@
 //= require jquery.form
 //= require jquery.placeholders
 //= require jquery.ui.combobox
+//= require jquery.enumerable
+//= require jquery.tufte-graph
 //= require jquery.colorbox
 //= require jquery.cookie
 //= require jquery.tipsy

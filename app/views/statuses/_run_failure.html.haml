@@ -12,19 +12,24 @@
   %table.inspector.data.status.bar
     %thead
       %tr.labels
+        %td= ""
         - statuses.each do |status|
           %th{:scope => :col}= status.start.strftime('%Y-%m-%d')
     %tbody
       %tr.unchanged
+        %th{:scope => :row}= "Unchanged"
         - statuses.each do |status|
           %td= status.unchanged
       %tr.changed
+        %th{:scope => :row}= "Changed"
         - statuses.each do |status|
           %td= status.changed
       %tr.pending
+        %th{:scope => :row}= "Pending"
         - statuses.each do |status|
           %td= status.pending
       %tr.failed
+        %th{:scope => :row}= "Failed"
         - statuses.each do |status|
           %td= status.failed
 - else
