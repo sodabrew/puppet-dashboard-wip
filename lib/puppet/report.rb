@@ -110,9 +110,9 @@ end
 module ReportExtensions #:nodoc:
   def self.extended(obj)
     case
-    when obj.instance_variables.include?('@report_format')
+    when obj.instance_variables.include?(:'@report_format')
       obj.extend ReportFormat2::Report
-    when obj.instance_variables.include?("@resource_statuses")
+    when obj.instance_variables.include?(:'@resource_statuses')
       obj.extend ReportFormat1::Report
     else
       obj.extend ReportFormat0::Report
