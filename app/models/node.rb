@@ -1,5 +1,6 @@
 class Node < ActiveRecord::Base
   def self.per_page; SETTINGS.nodes_per_page end # Pagination
+  has_paper_trail
 
   include NodeGroupGraph
   extend FindFromForm
