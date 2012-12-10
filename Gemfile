@@ -16,7 +16,8 @@ gem 'rack'
 
 gem 'daemons'
 gem 'json_pure'
-gem 'system_timer'
+gem 'fastercsv', :platforms => :ruby_18
+gem 'system_timer', :platforms => :ruby_18
 
 gem 'delayed_job', '~> 3.0'
 gem 'delayed_job_active_record', '~> 0.3.3'
@@ -36,5 +37,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'rspec-html-matchers'
   gem 'execjs'
-  gem 'therubyracer'
+  gem 'libv8', '~> 3.11.8'
+  gem 'therubyracer', '~> 0.11.0'
 end

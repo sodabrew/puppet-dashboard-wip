@@ -79,7 +79,7 @@ class Node < ActiveRecord::Base
     find_by_id(identifier) or find_by_name!(identifier)
   end
 
-  def self.find_from_inventory_search(search_params)
+  def self.find_from_inventory_search(search_params={})
     queries = search_params.map do |param|
       fact  = CGI::escape(param['fact'])
       value = CGI::escape(param['value'])
@@ -129,7 +129,7 @@ class Node < ActiveRecord::Base
   end
 
   def self.to_csv_header
-    CSV.generate_line(Node.to_csv_properties + ResourceStatus.to_csv_properties)
+    UseThisCSV.generate_line(Node.to_csv_properties + ResourceStatus.to_csv_properties)
   end
 
   def self.to_csv_properties
@@ -148,8 +148,8 @@ class Node < ActiveRecord::Base
     end
 
     rows.map do |row|
-      CSV.generate_line row
-    end.join("\n")
+      UseThisCSV.generate_line row
+    end.join
   end
 
   def timeline_events
