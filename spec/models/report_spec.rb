@@ -221,7 +221,6 @@ describe Report do
       it "should populate report related tables from a version 1 yaml report" do
         @node = Node.generate(:name => 'puppet.puppetlabs.vm')
         @report_yaml = File.read(File.join(Rails.root, "spec/fixtures/reports/puppet26/report_ok_service_started_ok.yaml"))
-        @report_yaml.untaint
         file = '/etc/puppet/manifests/site.pp'
         Report.create_from_yaml(@report_yaml)
         Report.count.should == 1
@@ -458,7 +457,6 @@ describe Report do
     it "should destroy all dependent model objects" do
       @node = Node.generate(:name => 'puppet.puppetlabs.vm')
       @report_yaml = File.read(File.join(Rails.root, "spec/fixtures/reports/puppet26/report_ok_service_started_ok.yaml"))
-      @report_yaml.untaint
       file = '/etc/puppet/manifests/site.pp'
       report = Report.create_from_yaml(@report_yaml)
       ResourceStatus.count.should_not == 0

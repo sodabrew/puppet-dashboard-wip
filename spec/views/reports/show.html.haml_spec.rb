@@ -6,7 +6,6 @@ describe "/reports/show.html.haml" do
   describe "successful render" do
     before :each do
       report_yaml = File.read(File.join(Rails.root, "spec/fixtures/reports/puppet26/report_ok_service_started_ok.yaml"))
-      report_yaml.untaint
       @report = Report.create_from_yaml(report_yaml)
       render
     end
