@@ -36,7 +36,10 @@ group :development, :test do
   gem 'factory_girl', '< 3.0' # supports ruby 1.8.7
   gem 'shoulda-matchers'
   gem 'rspec-html-matchers'
-  gem 'execjs'
+  gem 'execjs' # Will use system-available JS runtime
+end
+
+group :racer do
   gem 'libv8', '~> 3.11.8'
   gem 'therubyracer', '~> 0.11.0'
 end

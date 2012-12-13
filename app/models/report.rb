@@ -2,9 +2,9 @@ class Report < ActiveRecord::Base
   def self.per_page; SETTINGS.reports_per_page end # Pagination
   belongs_to :node
 
-  has_many :logs, :class_name => "ReportLog"
-  has_many :resource_statuses
-  has_many :metrics
+  has_many :logs,   :class_name => 'ReportLog',     :dependent => :destroy
+  has_many :metrics,                                :dependent => :destroy
+  has_many :resource_statuses,                      :dependent => :destroy
   has_many :events, :through => :resource_statuses
 
   accepts_nested_attributes_for :metrics, :resource_statuses, :logs, :events
@@ -162,11 +162,11 @@ class Report < ActiveRecord::Base
 
   def add_missing_metrics
     ['pending', 'unchanged'].each do |additional_status|
-      next if metrics.detect {|m| m.category == 'resources' and m.name == additional_status }
-      metrics << metrics.new(
+      next if metrics.any? {|m| m.category == 'resources' and m.name == additional_status }
+      metrics << Metric.new(
         :category => 'resources',
         :name     => additional_status,
-        :value    => resource_statuses.select {|rs| rs.status == additional_status  }.length
+        :value    => resource_statuses.select {|rs| rs.status == additional_status }.length
       )
     end
   end
