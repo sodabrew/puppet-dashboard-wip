@@ -13,5 +13,8 @@
     %ul#report-tabs.tabbed
       - tab_statuses.each do |tab_status|
         %li{:id => "#{tab_status}-tab", :class => (tab_status == @controller_action ? 'active' : '')  }
-          %a{:href => "/reports/#{tab_status}"}= h tab_status.humanize
+          - if tab_status == 'all'
+            %a{:href => '/reports'}= h tab_status.humanize
+          - else
+            %a{:href => "/reports/#{tab_status}"}= h tab_status.humanize
     = render :partial => 'reports/reports_table', :locals => { :reports => @reports, :node => @node }

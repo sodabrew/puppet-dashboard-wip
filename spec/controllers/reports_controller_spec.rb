@@ -92,20 +92,7 @@ describe ReportsController do
   describe "#index" do
     it "should render the index template and show all reports" do
       get('index')
-      response.code.should == '200'
-      response.should render_template("reports/index")
-      assigns[:controller_action].should == 'all'
-      assigns[:reports].should include @failed
-      assigns[:reports].should include @pending
-      assigns[:reports].should include @changed
-      assigns[:reports].should include @unchanged
-    end
-  end
-
-  describe "#all" do
-    it "should render the index template and show all reports" do
-      get('all')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/index")
       assigns[:controller_action].should == 'all'
       assigns[:reports].should include @failed
@@ -118,7 +105,7 @@ describe ReportsController do
   describe "#failed" do
     it "should render the index template and show only failed reports" do
       get('failed')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/index")
       assigns[:controller_action].should == 'failed'
       assigns[:reports].should include @failed
@@ -130,7 +117,7 @@ describe ReportsController do
   describe "#pending" do
     it "should render the index template and show only pending reports" do
       get('pending')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/index")
       assigns[:controller_action].should == 'pending'
       assigns[:reports].should_not include @failed
@@ -142,7 +129,7 @@ describe ReportsController do
   describe "#changed" do
     it "should render the index template and show only changed reports" do
       get('changed')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/index")
       assigns[:controller_action].should == 'changed'
       assigns[:reports].should_not include @failed
@@ -155,7 +142,7 @@ describe ReportsController do
   describe "#unchanged" do
     it "should render the index template and show only unchanged reports" do
       get('unchanged')
-      response.code.should == '200'
+      response.should be_success
       response.should render_template("reports/index")
       assigns[:controller_action].should == 'unchanged'
       assigns[:reports].should_not include @failed

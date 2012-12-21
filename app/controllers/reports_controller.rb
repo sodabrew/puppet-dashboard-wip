@@ -18,7 +18,7 @@ class ReportsController < InheritedResources::Base
     end
   end
 
-  [:all, :failed, :changed, :unchanged, :pending].each do |action|
+  [:failed, :changed, :unchanged, :pending].each do |action|
     define_method(action) {
       @reports = paginate_scope Report.send(action)
       @controller_action = action.to_s
