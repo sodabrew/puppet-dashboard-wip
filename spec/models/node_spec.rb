@@ -154,13 +154,20 @@ describe Node do
     end
 
     it 'should return a name and set of classes and parameters' do
-      @node.configuration.keys.sort.should == ['classes', 'name', 'parameters']
+      @node.configuration.keys.should =~ ['classes', 'name', 'parameters']
     end
 
+#This won't work any more once class parameters are introduced
     it "should return the names of the node's classes in the returned class list" do
       @node.node_classes = @classes = Array.new(3) { NodeClass.generate! }
-      @node.configuration['classes'].sort.should == @classes.collect(&:name).sort
+      @node.configuration['classes'].should =~ @classes.collect(&:name)
     end
+
+#This will replace the previous test once class parameters are introduced
+#    it "should return the names of the node's classes in the keys of the returned class list" do
+#      @node.node_classes = @classes = Array.new(3) { NodeClass.generate! }
+#      @node.configuration['classes'].keys.should =~ @classes.collect(&:name)
+#    end
 
     it "should return the node's compiled parameters in the returned parameters list" do
       @node.stubs(:compiled_parameters).returns [
@@ -264,12 +271,12 @@ describe Node do
       end
 
       it "should not raise an error if there are parameter conflicts that can be resolved at a higher level" do
-        @param_3 = Parameter.generate(:key => 'foo', :value => '3')
-        @param_4 = Parameter.generate(:key => 'foo', :value => '4')
+        param_3 = Parameter.generate(:key => 'foo', :value => '3')
+        param_4 = Parameter.generate(:key => 'foo', :value => '4')
         @node_group_c = NodeGroup.generate!
-        @node_group_c.parameters << @param_3
+        @node_group_c.parameters << param_3
         @node_group_d = NodeGroup.generate!
-        @node_group_d.parameters << @param_4
+        @node_group_d.parameters << param_4
         @node_group_a.node_groups << @node_group_c << @node_group_d
 
         lambda {@node.compiled_parameters}.should_not raise_error(ParameterConflictError)
@@ -277,10 +284,9 @@ describe Node do
       end
 
       it "should include parameters of the node itself" do
-        @param_5 = Parameter.create(:key => "node_parameter", :value => "exist")
-        @node.parameters << @param_5
+        @node.parameters << Parameter.create(:key => "node_parameter", :value => "exist")
 
-        @node.compiled_parameters.should be_any { |p| p.name == @param_5.key and p.value == @param_5.value }
+        @node.compiled_parameters.should be_any {|p| p.name == "node_parameter" && p.value == "exist"}
       end
 
       it "should retain the history of its parameters" do
