@@ -28,6 +28,7 @@ end
 
 # Begin adding Authentication, Authorization, Accounting
 gem 'devise', '~> 2.1'
+gem 'bcrypt-ruby', '~> 3.1', :require => 'bcrypt'
 gem 'omniauth', '~> 1.1'
 gem 'omniauth-google-oauth2', '~> 0.1.13'
 gem 'paper_trail', '~> 2.0'
