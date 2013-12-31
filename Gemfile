@@ -7,6 +7,7 @@ gem 'inherited_resources' , '~> 1.0'
 
 gem 'thin'
 gem 'rack'
+gem 'unicorn-rails'
 
 gem 'daemons'
 gem 'json_pure'
